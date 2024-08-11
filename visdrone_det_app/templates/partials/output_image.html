@@ -2,3 +2,12 @@
   src="{{url_for('static', filename='images/predictions/')}}{{filename}}"
   alt="input image"
 />
+
+<a
+  id="download-button"
+  hx-swap-oob="true"
+  class="btn btn-sm sm:btn btn-primary sm:btn-primary md:btn-wide w-full sm:w-auto"
+  href="{{url_for('download_image')}}"
+>
+  Download
+</a>

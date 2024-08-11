@@ -1,5 +1,5 @@
-{% from 'macros/image_card.html' import image_card_with_form with context %}
-{% from 'macros/image_card.html' import image_card %}
+{% from 'macros/image_card.html' import image_card_with_form with context %} 
+{% from 'macros/image_card.html' import image_card with context %} 
 {% from 'macros/head.html' import render_head %}
 
 <!DOCTYPE html>
@@ -23,11 +23,15 @@
         image\"") }}
 
         <!-- divider -->
-        <div class="divider lg:divider-horizontal text-2xl" 
+        <div
+          class="divider lg:divider-horizontal text-2xl"
+          hx-trigger="click from:#submit-button"
           hx-get="{{url_for('processing_button')}}"
           hx-swap="InnerHTML"
-          hx-trigger="click from:#submit-button">
-          <button class="btn btn-sm sm:btn btn-primary sm:btn-primary mx-5 opacity-50 cursor-not-allowed md:cursor-not-allowed">
+        >
+          <button
+            class="btn btn-sm sm:btn btn-primary sm:btn-primary mx-5 opacity-50 cursor-not-allowed md:cursor-not-allowed"
+          >
             Process Image
           </button>
         </div>
@@ -35,8 +39,7 @@
         <!-- second card -->
         {{ image_card(
         image_src="https://placehold.jp/3d4070/faf5f5/650x400.png?text=Output%20image",
-        image_desc="Output Image", msg="download the output",
-        button_text="Download", button_is_disabled=True) }}
+        image_desc="Output Image", msg="download the output", button_text="Download") }}
       </div>
     </main>
   </body>

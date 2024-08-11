@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session
+from flask import Flask, render_template, session, send_file
 from visdrone_det_app.forms import ImageForm
 from werkzeug.utils import secure_filename
 from visdrone_det_app.utils import build_image_path, process_image
@@ -42,11 +42,26 @@ def processing_button():
     return render_template('partials/processing_button.html')
 
 
+@app.route('/processing_done', methods=['POST'])
+def download_button():
+    return render_template('partials/download_button.html')
+
+
 @app.route('/process_image', methods=['POST'])
 def inference():
     input_image_file_name = session["input_image"]
     process_image(input_image_file_name)
     return output_image(input_image_file_name)
+
+
+@app.route('/download', methods=['GET'])
+def download_image():
+    image_name = session["input_image"]
+    image_path = build_image_path(image_name, "images/predictions")
+    return send_file(image_path, 
+                    download_name=f"detection_result_{image_name}",
+                    mimetype="image/*",
+                    as_attachment=True)
 
 
 if __name__ == "__main__":
