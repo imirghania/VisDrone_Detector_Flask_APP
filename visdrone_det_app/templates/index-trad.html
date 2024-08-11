@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='dist/css/output.css')}}"
+    />
+    <title>VisDrone Detector</title>
+  </head>
+  <body class="h-full">
+    <main class="py-10 px-7 bg-red-200 h-full">
+      <h1 class="text-red-800 text-center text-2xl font-bold mb-10">
+        VisDrone Detector
+      </h1>
+
+      <div
+        class="flex w-full flex-col lg:flex-row gap-7 mb-7 justify-center items-center p-3 md:p-7 bg-slate-100 drop-shadow-xl rounded-xl"
+      >
+        <!-- first card -->
+        <div class="card card-compact bg-base-100 sm:w-3/4 shadow-xl">
+          <figure>
+            <img
+              src="https://placehold.jp/3d4070/faf5f5/650x400.png?text=Input%20image"
+              alt="Input Image"
+            />
+          </figure>
+          <div class="card-body">
+            <p class="text-center font-semibold hidden sm:block">
+              Upload a top view image, "a drone-like image"
+            </p>
+            <div class="card-actions justify-center">
+              <button
+                class="btn btn-sm sm:btn btn-primary sm:btn-primary md:btn-wide"
+              >
+                Upload
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider lg:divider-horizontal text-2xl">
+          <span class="lg:hidden">↓</span>
+          <span class="hidden lg:inline-block">→</span>
+        </div>
+
+        <!-- second card -->
+        <div class="card card-compact bg-base-100 sm:w-3/4 shadow-xl">
+          <figure>
+            <img
+              src="https://placehold.jp/3d4070/faf5f5/650x400.png?text=Output%20image"
+              alt="Output Image"
+            />
+          </figure>
+          <div class="card-body">
+            <p class="text-center font-semibold hidden sm:block">
+              download the output
+            </p>
+            <div class="card-actions justify-center">
+              <button
+                class="btn btn-sm sm:btn btn-primary sm:btn-primary md:btn-wide opacity-50 cursor-not-allowed md:cursor-not-allowed"
+              >
+                Download
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- end of the second-card -->
+      </div>
+    </main>
+    <script src="{{url_for('static',filename='dist/js/htmx.min.js')}}"></script>
+  </body>
+</html>

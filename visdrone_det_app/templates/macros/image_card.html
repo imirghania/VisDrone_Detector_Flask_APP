@@ -1,0 +1,53 @@
+{% macro image_card(image_src, image_desc='image', msg='Message',
+button_text='Button', button_is_disabled=False) %}
+<div class="card card-compact bg-base-100 sm:w-3/4 shadow-xl">
+  <figure>
+    <img src="{{ image_src }}" alt="{{ image_desc }}" />
+  </figure>
+  <div class="card-body">
+    <p class="text-center font-semibold hidden sm:block">{{ msg }}</p>
+    <div class="card-actions justify-center">
+      {% if button_is_disabled %}
+      <button
+        class="btn btn-sm sm:btn btn-primary sm:btn-primary md:btn-wide opacity-50 cursor-not-allowed md:cursor-not-allowed"
+      >
+        {{ button_text }}
+      </button>
+      {% else %}
+      <button class="btn btn-sm sm:btn btn-primary sm:btn-primary md:btn-wide">
+        {{ button_text }}
+      </button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endmacro %} 
+
+{% macro image_card_with_form(image_src, image_desc='image',
+msg='Message') %}
+<div class="card card-compact bg-base-100 sm:w-3/4 shadow-xl">
+  <figure id="input-image">
+    <img src="{{ image_src }}" alt="{{ image_desc }}" />
+  </figure>
+  <div class="card-body">
+    <p class="text-center font-semibold hidden sm:block">{{ msg }}</p>
+    <div class="card-actions justify-center">
+      <form
+        id="input-image-form"
+        hx-post="{{url_for('index')}}"
+        hx-target="#input-image"
+        hx-swap="InnerHTML"
+        hx-trigger="submit delay:500ms"
+        enctype="multipart/form-data"
+        class="flex flex-col sm:flex-row justify-around w-full"
+        novalidate
+      >
+        {{ form.hidden_tag() }}
+        {{ form.image(class="file-input w-full max-w-xs file-input-primary
+        sm:file-input-primary mb-2 sm:mb-0") }}
+        {{ form.submit(id="submit-button", class="btn btn-sm sm:btn btn-primary sm:btn-primary") }}
+      </form>
+    </div>
+  </div>
+</div>
+{% endmacro %}

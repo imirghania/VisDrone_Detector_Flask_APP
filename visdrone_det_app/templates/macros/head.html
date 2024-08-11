@@ -1,0 +1,15 @@
+{% macro render_head(title="VisDrone Detector") %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="{{url_for('static',filename='dist/css/output.css')}}"
+  />
+  <script
+    src="{{url_for('static',filename='dist/js/htmx.min.js')}}"
+    defer
+  ></script>
+  <title>{{ title }}</title>
+</head>
+{% endmacro %}

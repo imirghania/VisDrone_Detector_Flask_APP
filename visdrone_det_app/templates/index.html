@@ -1,0 +1,43 @@
+{% from 'macros/image_card.html' import image_card_with_form with context %}
+{% from 'macros/image_card.html' import image_card %}
+{% from 'macros/head.html' import render_head %}
+
+<!DOCTYPE html>
+<html lang="en">
+  {{ render_head() }}
+  <body class="h-full">
+    <main class="py-10 px-7 bg-red-200 h-full">
+      <!-- App Title -->
+      <h1 class="text-red-800 text-center text-2xl font-bold mb-10">
+        VisDrone Detector
+      </h1>
+
+      <!-- Cards Container -->
+      <div
+        class="flex w-full flex-col lg:flex-row gap-7 md:gap-12 mb-7 justify-center items-center p-3 md:p-7 bg-slate-100 drop-shadow-xl rounded-xl"
+      >
+        <!-- first card -->
+        {{ image_card_with_form(
+        image_src="https://placehold.jp/3d4070/faf5f5/650x400.png?text=Input%20image",
+        image_desc="Input Image", msg="Upload a top view image, \"a drone-like
+        image\"") }}
+
+        <!-- divider -->
+        <div class="divider lg:divider-horizontal text-2xl" 
+          hx-get="{{url_for('processing_button')}}"
+          hx-swap="InnerHTML"
+          hx-trigger="click from:#submit-button">
+          <button class="btn btn-sm sm:btn btn-primary sm:btn-primary mx-5 opacity-50 cursor-not-allowed md:cursor-not-allowed">
+            Process Image
+          </button>
+        </div>
+
+        <!-- second card -->
+        {{ image_card(
+        image_src="https://placehold.jp/3d4070/faf5f5/650x400.png?text=Output%20image",
+        image_desc="Output Image", msg="download the output",
+        button_text="Download", button_is_disabled=True) }}
+      </div>
+    </main>
+  </body>
+</html>
