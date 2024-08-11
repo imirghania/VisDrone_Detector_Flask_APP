@@ -1,7 +1,7 @@
 {% macro image_card(image_src, image_desc='image', msg='Message',
 button_text='Button', button_is_disabled=False) %}
 <div class="card card-compact bg-base-100 sm:w-3/4 shadow-xl">
-  <figure>
+  <figure id="output-image">
     <img src="{{ image_src }}" alt="{{ image_desc }}" />
   </figure>
   <div class="card-body">

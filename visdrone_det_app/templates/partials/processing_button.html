@@ -1,3 +1,8 @@
-<button class="btn btn-sm sm:btn btn-primary sm:btn-primary mx-5">
+<button
+  hx-post="{{url_for('inference')}}"
+  hx-target="#output-image"
+  hx-swap="InnerHTML"
+  class="btn btn-sm sm:btn btn-primary sm:btn-primary mx-5"
+>
   Process Image
 </button>
