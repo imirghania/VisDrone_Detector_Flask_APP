@@ -2,3 +2,19 @@
   src="{{url_for('static', filename='images/uploads/')}}{{filename}}"
   alt="input image"
 />
+
+<button
+  id="processing-button"
+  hx-swap-oob="true"
+  hx-post="{{url_for('inference')}}"
+  hx-target="#output-image"
+  hx-swap="InnerHTML"
+  hx-indicator="#spinner"
+  class="btn btn-sm sm:btn btn-primary sm:btn-primary mx-5"
+>
+  Process Image
+  <span
+    class="loading loading-spinner loading-sm spinner htmx-indicator"
+    id="spinner"
+  ></span>
+</button>

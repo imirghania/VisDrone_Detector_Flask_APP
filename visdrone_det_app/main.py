@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, send_file
+from flask import Flask, render_template, request, session, abort, send_file
 from visdrone_det_app.forms import ImageForm
 from werkzeug.utils import secure_filename
 from visdrone_det_app.utils import build_image_path, process_image
@@ -15,15 +15,20 @@ BASEDIR = os.path.abspath(os.path.dirname(__file__))
 def index():
     form = ImageForm()
 
-    if form.validate_on_submit():
-        img = form.image.data
-        filename = secure_filename(img.filename)
-        if filename != "":
-            image_path = build_image_path(filename)
-            img.save(image_path)
-            session["input_image"] = filename
-            return input_image(filename=filename)
-
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            img = form.image.data
+            filename = secure_filename(img.filename)
+            # print("-------Image File Name: ", filename)
+            if filename != "":
+                image_path = build_image_path(filename)
+                img.save(image_path)
+                session["input_image"] = filename
+                return input_image(filename=filename)
+        else:
+            abort(400)
+            # return render_template('partials/default_input_image.html')
+    
     return render_template('index.html', form=form)
 
 

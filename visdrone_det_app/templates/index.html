@@ -6,9 +6,9 @@
 <html lang="en">
   {{ render_head() }}
   <body class="h-full">
-    <main class="py-10 px-7 bg-red-200 h-full">
+    <main class="py-10 px-7 h-full bg-gray-300">
       <!-- App Title -->
-      <h1 class="text-red-800 text-center text-2xl font-bold mb-10">
+      <h1 class="text-indigo-800 text-center text-2xl sm:text-5xl font-bold mb-10">
         VisDrone Detector
       </h1>
 
@@ -23,13 +23,9 @@
         image\"") }}
 
         <!-- divider -->
-        <div
-          class="divider lg:divider-horizontal text-2xl"
-          hx-trigger="click from:#submit-button"
-          hx-get="{{url_for('processing_button')}}"
-          hx-swap="InnerHTML"
-        >
+        <div class="divider lg:divider-horizontal text-2xl">
           <button
+            id="processing-button"
             class="btn btn-sm sm:btn btn-primary sm:btn-primary mx-5 opacity-50 cursor-not-allowed md:cursor-not-allowed"
           >
             Process Image
