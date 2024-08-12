@@ -1,6 +1,6 @@
-# VisDrone_Detector_Flask_APP
+# VisDrone Object Detector Flask APP
 
-![Full functioning app](app_screenshots/4.png)
+![original iamge](app_screenshots/original.png) ![an inference result](app_screenshots/result.png)
 
 This as a web interface for a [YOLOv8](https://docs.ultralytics.com/) model, of size `x`, that has been trained on [VisDrone2019 dataset](https://github.com/VisDrone/VisDrone-Dataset).
 

@@ -42,16 +42,6 @@ def output_image(filename):
     return render_template('partials/output_image.html', filename=filename)
 
 
-@app.route('/processing_activated', methods=['GET'])
-def processing_button():
-    return render_template('partials/processing_button.html')
-
-
-@app.route('/processing_done', methods=['POST'])
-def download_button():
-    return render_template('partials/download_button.html')
-
-
 @app.route('/process_image', methods=['POST'])
 def inference():
     input_image_file_name = session["input_image"]
