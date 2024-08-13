@@ -8,3 +8,7 @@ load_dotenv()
 class Config:
     BASEDIR = os.path.abspath(os.path.dirname(__file__))
     SECRET_KEY = os.getenv('SECRET_KEY')
+    MODEL_NAME = os.getenv('MODEL_NAME')
+
+
+config = Config()
